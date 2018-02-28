@@ -13,18 +13,19 @@ ui <- dashboardPage(
     tabItems(
       tabItem(tabName = "por_tab",
               fluidRow(
-                box(dygraphOutput("por_index"), width=9),
-                box(textOutput("por_legend_index"), title = "Legend", collapsible = TRUE, width=3),
                 box(dygraphOutput("por_quant"), width=9),
-                box(textOutput("por_legend_quant"), title = "Legend", collapsible = TRUE, width=3)
+                box(textOutput("por_legend_quant"), title = "Legend", collapsible = TRUE, width=3),
+                box(dygraphOutput("por_index"), width=9),
+                box(textOutput("por_legend_index"), title = "Legend", collapsible = TRUE, width=3)
+                
               )
       ),
       tabItem(tabName = "lf_tab",
               fluidRow(
-                box(dygraphOutput("lf_index"), width=9),
-                box(textOutput("lf_legend_index"), title = "Legend", collapsible = TRUE, width=3),
                 box(dygraphOutput("lf_quant"), width=9),
-                box(textOutput("lf_legend_quant"), title = "Legend", collapsible = TRUE, width=3)
+                box(textOutput("lf_legend_quant"), title = "Legend", collapsible = TRUE, width=3),
+                box(dygraphOutput("lf_index"), width=9),
+                box(textOutput("lf_legend_index"), title = "Legend", collapsible = TRUE, width=3)
               )
       )
     )
