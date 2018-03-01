@@ -1,13 +1,20 @@
 
 library(XML)
-file.dir <- "C:/Users/zsmith/Desktop/2018022712_PORM2POT_hefs_export.xml/2018022712_PORM2POT_hefs_export.xml"
-doc = xmlParse(system.file("exampleData", file.dir, package = "XML"))
+file.dir <- "C:/Users/zsmith/Desktop/por_xml/2018022712_PORM2POT_hefs_export.xml.gz"
+#doc = xmlParse(system.file("exampleData", file.dir, package = "XML"))
+xml.p <- xmlParse(file.dir)
+topxml <- xmlRoot(xml.p)
 
+topxml <- xmlSApply(topxml,
+                    function(x) xmlSApply(x, xmlValue))
+
+xml_df <- data.frame((topxml),
+                     row.names=NULL)
 els = getNodeSet(doc, "/doc//a[@status]")
 sapply(els, function(el) xmlGetAttr(el, "status"))
 
 test = xmlInternalTreeParse(file.dir)
-df <- xmlToDataFrame(test)
+df <- xmlToDataFrame(topxml)
 xml.p <- xmlParse(file.dir)
 nodes <- xmlRoot(xml.p)
 
